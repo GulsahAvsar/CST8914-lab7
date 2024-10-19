@@ -29,8 +29,8 @@
         <h1>Feedback form</h1>
     <fieldset>   <!--fieldset added-->
       <form>
-        <div class="control"> <!--for attribute added-->
-          <label for="name">Full name <span class="required">*</span></label><input id="name" name="name" type="text" />
+        <div class="control"> <!--for attribute added-->  <!--aria labels addes-->
+          <label for="name">Full name <span class="required" aria-hidden="true">*</span></label><input id="name" name="name" type="text" aria-required="true" />
         </div>
         <div class="control">
           <label for="biography">Biography</label><textarea id="biography" name="biography" type="text"></textarea>

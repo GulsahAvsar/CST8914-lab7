@@ -29,7 +29,7 @@
         <h1>Feedback form</h1>
         <form>    
           <fieldset>   <!--fieldset added-->
-              <div class="control"> <!--for attribute added-->  <!--aria labels addes-->
+              <div class="control"> <!--for attribute added-->  <!--aria labels added-->
                 <label for="name">Full name <span class="required" aria-hidden="true">*</span></label><input id="name" name="name" type="text" aria-required="true" />
               </div>
               <div class="control">
@@ -94,7 +94,8 @@
               $referencedElement = $input;
             }
       // R.G. hint: fix next line ;)
-            $error = $('<a>' + message + '</a>');
+            $error = $('<a href="#" tabindex="0" aria-describedby="' + input + '_description">' + message + '</a>');
+
             $error.click(function (e) {
               // If we rely on the link's href pointing to the input's ID, it doesn't trigger forms mode in screen readers
               $referencedElement.focus();

@@ -53,6 +53,8 @@
                 <input name="validate" type="hidden" value="1" /><input type="submit" value="Register" />
               </div>
         </form>
+        <div id="successMessage" aria-live="polite" style="display:none; color: green;">All inputs are valid</div>
+        <div id="errorMessage" aria-live="assertive" style="display:none; color: red;" tabindex="-1"></div>
       
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
           <script>"use strict";
@@ -78,9 +80,10 @@
       
           if ((value = $.urlParam(input)) === null) {
             if ($('fieldset.errors').length === 0) {
-              $('form').prepend('<fieldset class="errors"><legend>Errors</legend><ul></ul></fieldset>');
+              $('form').prepend('<fieldset class="errors" tabindex="-1"><legend>Errors</legend><ul></ul></fieldset>'); // tabindex=-1 added to make error summary focusable
             }
-      
+            $('fieldset.errors').focus();
+
             $referencedElement = null;
             $elementToDescribe = null;
             $errorContainer = $('fieldset.errors ul');
@@ -94,7 +97,7 @@
               $referencedElement = $input;
             }
       // R.G. hint: fix next line ;)
-            $error = $('<a href="#" tabindex="0" aria-describedby="' + input + '_description">' + message + '</a>');
+            $error = $('<a href="#" tabindex="0" aria-describedby="' + input + '_description">' + message + '</a>');  //href=#, tabindex=0, aria describedby added
 
             $error.click(function (e) {
               // If we rely on the link's href pointing to the input's ID, it doesn't trigger forms mode in screen readers

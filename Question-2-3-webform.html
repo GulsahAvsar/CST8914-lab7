@@ -109,7 +109,7 @@
       
             if ($(':not(form):focus').length === 0) {
               // See https://stackoverflow.com/questions/46134247/jquery-setting-focus-doesnt-work-in-ie11/
-            
+              $('fieldset.errors').attr('tabindex', '-1').focus(); 
             }
           } else {
             if ($input.is(':checkbox')) {
